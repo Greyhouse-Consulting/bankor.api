@@ -1,0 +1,26 @@
+
+<div class="container">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accounts">
+      <td><a class="nav-link" [routerLink]='["/account", account.id]' >{{account.id}} </a></td>
+      <td>{{account.name}}</td>
+      <td><button type="button" class="btn btn-danger" (click)="delete(account.id)" >Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+  <!-- Content here -->
+
+
+
+  
+</div>
