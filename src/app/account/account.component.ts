@@ -10,7 +10,7 @@ export class AccountComponent implements OnInit {
   
   id: number;
 
-  constructor( private route: ActivatedRoute,) {
+  constructor( private route: ActivatedRoute) {
    }
 
   ngOnInit() {

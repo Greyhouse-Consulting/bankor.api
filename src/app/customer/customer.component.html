@@ -1,0 +1,27 @@
+{{diagnostic}}
+<div class="container">
+
+  <div class="form-row">
+    <div class="col">
+      <label class="label" for="firstname">Firstname</label>
+      <input type="text" class="form-control" placeholder="Firstname" id="firstname" name="firstname" required minlength="4"
+        [(ngModel)]="model.firstname" #firstname="ngModel">
+      <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+        <div *ngIf="firstname.errors.required">Name is required.</div>
+        <div *ngIf="firstname.errors.minlength">Name must be at least 4 characters long.</div>
+      </div>
+    </div>
+    <div class="col">
+      <label class="label" for="lastname">Lastname</label>
+      <input type="text" class="form-control" placeholder="Lastname" id="lastname" [(ngModel)]="model.lastname"
+        required>
+    </div>
+    <div class="col">
+      <label class="label" for="mobile">Mobile</label>
+      <input type="text" class="form-control" placeholder="Mobile" id="mobile" required [(ngModel)]="model.mobile">
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="new()">New</button>
+  <button type="submit" class="btn btn-success">Save</button>
+</div>

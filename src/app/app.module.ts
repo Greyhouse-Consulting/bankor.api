@@ -7,17 +7,22 @@ import { AccountComponent } from './account/account.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountsService } from './accounts.service';
+import { CustomerComponent } from './customer/customer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
-    AccountsComponent
+    AccountsComponent,
+    CustomerComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
