@@ -11,6 +11,7 @@ import { ACCOUNTS } from './mock-accounts';
 export class AccountsService {
 
   private accountsUrl = Constants.apiRoot + "/accounts";  // URL to web api
+  private accountUrl = Constants.apiRoot + "/account";  // URL to web api
 
   constructor(private http: HttpClient) { }
 
@@ -18,9 +19,9 @@ export class AccountsService {
     return this.http.get<Account[]>(this.accountsUrl)
   }
 
-  //public getAccount(): Observable<Account> {
-  public getAccount(id: number): Account {
-    // return this.http.get<Account>(this.accountsUrl)
+  public getAccount(id : number): Account {
+//  public getAccount(id: number):  Observable<Account> {
+  //   return this.http.get<Account>(this.accountUrl)
 
     return ACCOUNTS[id - 1];
   }

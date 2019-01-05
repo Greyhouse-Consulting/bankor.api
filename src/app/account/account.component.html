@@ -15,8 +15,8 @@
 </div>
 
 <div class="container">
-  <h3>Transations</h3>
 
+  <h3>Transations</h3>
 
   <div class="container">
     <table class="table">
@@ -24,17 +24,16 @@
         <tr>
           <th scope="col">Transaction Date</th>
           <th scope="col">Bookingdate</th>
-          <th scope="col"></th>
+          <th scope="col">Amount</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let account of accounts">
-          <td>{{account.transactionDate}}</td>
-          <td>{{account.name}}</td>
-          <td><button type="button" class="btn btn-danger" (click)="delete(account.id)">Delete</button></td>
+        <tr *ngFor="let transaction of model.transactions">
+          <td>{{transaction.transactionDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{transaction.bookingDate | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+          <td>{{transaction.amount }}</td>
         </tr>
       </tbody>
     </table>
-
   </div>
 </div>
