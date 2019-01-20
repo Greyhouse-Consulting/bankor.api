@@ -19,7 +19,7 @@ export class CustomerComponent {
 
   public saveCustomer() {
     console.log('Saving customer');
-    this.customerService.updatecustomer(this.model);
+    this.customerService.updatecustomer(this.model).subscribe(() => {})
   }
 
   get diagnostic() { return JSON.stringify(this.model); }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,9 +11,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </button>
   </div>
   <div class="modal-body">
-    <p><strong>Are you sure you want to close the <span class="text-primary">"account"</span>?</strong></p>
-    <p>All information associated to this user profile will be permanently deleted.
-    <span class="text-danger">This operation can not be undone.</span>
+    <p><strong>Are you sure you want to close the account (<span class="text-primary">"{{accountId}}"</span>)?</strong></p>
+    <p>The account will be closed and cannot be used anymore.
     </p>
   </div>
   <div class="modal-footer">
@@ -23,24 +22,29 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   `
 })
 export class NgbdModalConfirm {
-  constructor(public modal: NgbActiveModal) {}
+  @Input() accountId: number;
+
+  constructor(public modal: NgbActiveModal) { }
 }
 
 const MODALS = {
   focusFirst: NgbdModalConfirm,
-  };
+};
 
 @Component({
   selector: 'ngbd-modal-focus',
   templateUrl: './modal-focus.html'
 })
 export class NgbdModalFocus {
-  withAutofocus = `<button type="button" ngbAutofocus class="btn btn-danger"
-      (click)="modal.close('Ok click')">Ok</button>`;
 
-  constructor(private _modalService: NgbModal) {}
+  @Input() accountId: number; 
+
+  constructor(private _modalService: NgbModal) { }
 
   open(name: string) {
-    this._modalService.open(MODALS[name]);
+    let modal = this._modalService.open(MODALS[name]);
+    modal.componentInstance.accountId = this.accountId;
+    modal.result.then((x) => { console.log('When user closes : ' + x); }, () => { console.log('Backdrop click')})
+    console.log('AccountId is ' + this.accountId);
   }
 }

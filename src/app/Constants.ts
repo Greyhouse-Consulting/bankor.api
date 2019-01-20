@@ -1,3 +1,3 @@
 export class Constants {
-    public static apiRoot = "http://localhost:5555"
+    public static apiRoot = "http://localhost:5555/"
 }
